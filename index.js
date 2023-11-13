@@ -15,18 +15,18 @@ const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
 
-// import { handler } from "file://D:/projects/JTVServer github/WEB/build/handler.js";
+ 
+if (!fs.existsSync("./.jiotv")) {
+  //fs["writeFileSync"]("./.jiotv/channel.db", '{"channel": {}}');
+  fs.mkdirSync(path.join(__dirname, "./.jiotv"));
+}  
 
-// let networkInterfaces = os.networkInterfaces();
-// let ip = networkInterfaces["eth0"][0]["address"];
-// fs["writeFileSync"]("./ipData.jiotv", ip);
-
-if (!fs.existsSync("channel.db")) {
-  fs["writeFileSync"]("./channel.db", '{"channel": {}}');
+if (!fs.existsSync("./.jiotv/channel.db")) {
+  fs["writeFileSync"]("./.jiotv/channel.db", '{"channel": {}}');
 }
 
-if (!fs.existsSync("channel-catchup.db")) {
-  fs["writeFileSync"]("./channel-catchup.db", '{"channel": {}}');
+if (!fs.existsSync("./.jiotv/channel-catchup.db")) {
+  fs["writeFileSync"]("./.jiotv/channel-catchup.db", '{"channel": {}}');
 }
 
 app.get("/login.html", (req, res) => {
